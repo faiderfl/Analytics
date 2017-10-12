@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[SalesConsolidated](
 	[Customer] [varchar](50) NULL,	
 	[TotalProducts] [int] NULL,	
 	[TotalPrice] [int] NULL,
-	[ConsolidatedDate] [datetime] NULL,
+	[ConsolidatedDate] [Date] NULL,
 )
 
 GO
