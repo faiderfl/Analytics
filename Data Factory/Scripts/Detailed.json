@@ -1,0 +1,54 @@
+{
+    "name": "Detailed",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureDataLakeStoreSource",
+                        "recursive": false
+                    },
+                    "sink": {
+                        "type": "SqlSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    },
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "columnMappings": "Customer:Customer,Date:Date,Products:Products,Description:Description,Price:Price"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "InputDataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "OutputDataset"
+                    }
+                ],
+                "policy": {
+                    "timeout": "1.00:00:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 3,
+                    "longRetry": 0,
+                    "longRetryInterval": "00:00:00"
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Activity-0-20170918_csv->[dbo]_[Sales]"
+            }
+        ],
+        "start": "2017-10-11T03:37:01.988Z",
+        "end": "2099-12-31T05:00:00Z",
+        "isPaused": false,
+        "hubName": "wsbddatafactory_hub",
+        "pipelineMode": "Scheduled"
+    }
+}

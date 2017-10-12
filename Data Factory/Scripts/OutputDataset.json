@@ -1,0 +1,39 @@
+{
+    "name": "OutputDataset",
+    "properties": {
+        "structure": [
+            {
+                "name": "Customer",
+                "type": "String"
+            },
+            {
+                "name": "Date",
+                "type": "Datetime"
+            },
+            {
+                "name": "Products",
+                "type": "Int32"
+            },
+            {
+                "name": "Description",
+                "type": "String"
+            },
+            {
+                "name": "Price",
+                "type": "Int32"
+            }
+        ],
+        "published": false,
+        "type": "AzureSqlTable",
+        "linkedServiceName": "Destination-SQLAzure-qhk",
+        "typeProperties": {
+            "tableName": "[dbo].[Sales]"
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}

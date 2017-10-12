@@ -1,0 +1,14 @@
+{
+    "name": "AzureDataLakeAnalyticsLinkedService",
+    "properties": {
+        "hubName": "wsbddatafactory_hub",
+        "type": "AzureDataLakeAnalytics",
+        "typeProperties": {
+            "accountName": "wsbddatalakeanalytics",
+            "authorization": "**********",
+            "sessionId": "**********",
+            "subscriptionId": "14b9c31c-914d-43ad-9ddf-71ba39433f4a",
+            "resourceGroupName": "GRData"
+        }
+    }
+}

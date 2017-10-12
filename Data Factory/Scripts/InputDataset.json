@@ -1,0 +1,46 @@
+{
+    "name": "InputDataset",
+    "properties": {
+        "structure": [
+            {
+                "name": "Customer",
+                "type": "String"
+            },
+            {
+                "name": "Date",
+                "type": "Datetime"
+            },
+            {
+                "name": "Products",
+                "type": "Int64"
+            },
+            {
+                "name": "Description",
+                "type": "String"
+            },
+            {
+                "name": "Price",
+                "type": "Int64"
+            }
+        ],
+        "published": false,
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "DataLakeStoreLinkedServer",
+        "typeProperties": {
+            "fileName": "20170918.csv",
+            "folderPath": "Data",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": "|",
+                "skipLineCount": 1,
+                "firstRowAsHeader": true
+            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": true,
+        "policy": {}
+    }
+}

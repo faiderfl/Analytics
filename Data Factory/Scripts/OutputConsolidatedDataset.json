@@ -1,0 +1,40 @@
+{
+    "name": "OutputConsolidatedDataset",
+    "properties": {
+        "structure": [
+            {
+                "name": "Customer",
+                "type": "String"
+            },
+            {
+                "name": "TotalProducts",
+                "type": "Int32"
+            },
+            {
+                "name": "TotalPrice",
+                "type": "Int32"
+            },
+            {
+                "name": "ConsolidatedDate",
+                "type": "Datetime",
+                "culture": "es-CO",
+                "format": "yyyy-MM-dd"
+            }
+        ],
+        "published": false,
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "DataLakeStoreLinkedServer",
+        "typeProperties": {
+            "fileName": "20170918.csv",
+            "folderPath": "Data/Consolidated/",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": "|"
+            }
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "name": "DynamicOutputDataset",
+    "properties": {
+        "structure": [
+            {
+                "name": "Customer",
+                "type": "String"
+            },
+            {
+                "name": "TotalProducts",
+                "type": "Int32"
+            },
+            {
+                "name": "TotalPrice",
+                "type": "Int32"
+            },
+            {
+                "name": "ConsolidatedDate",
+                "type": "Datetime",
+                "culture": "es-CO",
+                "format": "yyyy-MM-dd"
+            }
+        ],
+        "published": false,
+        "type": "AzureSqlTable",
+        "linkedServiceName": "Destination-SQLAzure-qhk",
+        "typeProperties": {
+            "tableName": "[dbo].[SalesConsolidated]"
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        },
+        "external": false,
+        "policy": {}
+    }
+}

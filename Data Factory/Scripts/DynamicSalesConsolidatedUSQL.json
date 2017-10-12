@@ -1,0 +1,87 @@
+{
+    "name": "DynamicSalesConsolidatedUSQL",
+    "properties": {
+        "description": "This is a pipeline to compute USQL",
+        "activities": [
+            {
+                "type": "DataLakeAnalyticsU-SQL",
+                "typeProperties": {
+                    "scriptPath": "scripts\\Consolidated.usql",
+                    "scriptLinkedService": "AzureStorageLinkedService",
+                    "degreeOfParallelism": 1,
+                    "priority": 1000,
+                    "parameters": {
+                        "in": "$$Text.Format('/Data/Detailed/{0:yyyy}/{0:MM}/{0:yyyy}{0:MM}{0:dd}.csv', SliceStart)",
+                        "out": "$$Text.Format('/Data/Consolidated/{0:yyyy}/{0:MM}/{0:yyyy}{0:MM}{0:dd}.csv', SliceStart)",
+                        "timezone": "0"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "DynamicInputDataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "DynamicOutputConsolidatedDataset"
+                    }
+                ],
+                "policy": {
+                    "timeout": "00:05:00",
+                    "concurrency": 1,
+                    "executionPriorityOrder": "NewestFirst",
+                    "retry": 1
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Consolidated Procesing Dynamic",
+                "linkedServiceName": "AzureDataLakeAnalyticsLinkedService"
+            },
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureDataLakeStoreSource",
+                        "recursive": false
+                    },
+                    "sink": {
+                        "type": "SqlSink",
+                        "writeBatchSize": 0,
+                        "writeBatchTimeout": "00:00:00"
+                    },
+                    "translator": {
+                        "type": "TabularTranslator",
+                        "columnMappings": "Customer:Customer,TotalProducts:TotalProducts,TotalPrice:TotalPrice,ConsolidatedDate:ConsolidatedDate"
+                    }
+                },
+                "inputs": [
+                    {
+                        "name": "DynamicOutputConsolidatedDataset"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "DynamicOutputDataset"
+                    }
+                ],
+                "policy": {
+                    "timeout": "01:00:00",
+                    "concurrency": 2,
+                    "retry": 2
+                },
+                "scheduler": {
+                    "frequency": "Day",
+                    "interval": 1
+                },
+                "name": "Copy Dynamic"
+            }
+        ],
+        "start": "2017-10-11T03:37:01.988Z",
+        "end": "2099-12-31T05:00:00Z",
+        "isPaused": false,
+        "hubName": "wsbddatafactory_hub",
+        "pipelineMode": "Scheduled"
+    }
+}

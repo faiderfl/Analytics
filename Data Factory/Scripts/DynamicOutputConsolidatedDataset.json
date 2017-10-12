@@ -1,0 +1,66 @@
+{
+    "name": "DynamicOutputConsolidatedDataset",
+    "properties": {
+        "structure": [
+            {
+                "name": "Customer",
+                "type": "String"
+            },
+            {
+                "name": "TotalProducts",
+                "type": "Int32"
+            },
+            {
+                "name": "TotalPrice",
+                "type": "Int32"
+            },
+            {
+                "name": "ConsolidatedDate",
+                "type": "Datetime",
+                "culture": "es-CO",
+                "format": "yyyy-MM-dd"
+            }
+        ],
+        "published": false,
+        "type": "AzureDataLakeStore",
+        "linkedServiceName": "DataLakeStoreLinkedServer",
+        "typeProperties": {
+            "fileName": "{Year}{Month}{Day}.csv",
+            "folderPath": "Data/Consolidated/{Year}/{Month}",
+            "format": {
+                "type": "TextFormat",
+                "columnDelimiter": "|"
+            },
+            "partitionedBy": [
+                {
+                    "name": "Year",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "yyyy"
+                    }
+                },
+                {
+                    "name": "Month",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "MM"
+                    }
+                },
+                {
+                    "name": "Day",
+                    "value": {
+                        "type": "DateTime",
+                        "date": "SliceStart",
+                        "format": "dd"
+                    }
+                }
+            ]
+        },
+        "availability": {
+            "frequency": "Day",
+            "interval": 1
+        }
+    }
+}

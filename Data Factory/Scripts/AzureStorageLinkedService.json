@@ -1,0 +1,11 @@
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+        "description": "",
+        "hubName": "wsbddatafactory_hub",
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=wsbdstorage;AccountKey=**********;EndpointSuffix=core.windows.net"
+        }
+    }
+}

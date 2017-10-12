@@ -1,0 +1,17 @@
+{
+    "name": "DataLakeStoreLinkedServer",
+    "properties": {
+        "hubName": "wsbddatafactory_hub",
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://wsbddatalake.azuredatalakestore.net/webhdfs/v1",
+            "servicePrincipalId": "",
+            "servicePrincipalKey": "**********",
+            "tenant": "",
+            "authorization": "**********",
+            "sessionId": "**********",
+            "subscriptionId": "14b9c31c-914d-43ad-9ddf-71ba39433f4a",
+            "resourceGroupName": "GRData"
+        }
+    }
+}

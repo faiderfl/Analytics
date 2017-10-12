@@ -1,0 +1,10 @@
+{
+    "name": "Destination-SQLAzure-qhk",
+    "properties": {
+        "hubName": "wsbddatafactory_hub",
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Data Source=wsbdserver.database.windows.net;Initial Catalog=wsbdDatabase;Integrated Security=False;User ID=wsbdadmin;Password=**********;Connect Timeout=30;Encrypt=True"
+        }
+    }
+}
